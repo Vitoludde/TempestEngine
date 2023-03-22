@@ -1,0 +1,5 @@
+﻿  Building Custom Rule C:/OpenGL/tests/CMakeLists.txt
+  timeout.c
+  glad_gl.c
+  Generating Code...
+  timeout.vcxproj -> C:\OpenGL\build\tests\Debug\timeout.exe
