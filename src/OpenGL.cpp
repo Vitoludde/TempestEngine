@@ -182,9 +182,3 @@ void processInput(GLFWwindow* window)													// Function for handling keybo
 		glfwSetWindowShouldClose(window, true);
 	}
 }
-
-float Vector3ToFloats(Vector3* vecs, int SizeOfList)
-{
-	// TODO: Implement this
-	return 0.0f;
-}

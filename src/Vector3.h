@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <math.h>
+#include <vector>
 #include <fmt/core.h>
 
 #define PI           3.14159265358979323846f  /* pi */
@@ -150,6 +151,12 @@ namespace TempestEngine
 		bool operator!=(const Vector3& other)
 		{ // Checks if our vector is NOT equal to another vector
 			return x != other.x && y != other.y && z != other.z;
+		}
+
+
+		// Casts
+		operator std::vector<double>() const {
+			return std::vector<double>{x, y, z};
 		}
 	};
 }
