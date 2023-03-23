@@ -1,7 +1,0 @@
-﻿  Building Custom Rule C:/OpenGL/tests/CMakeLists.txt
-  glfwinfo.c
-  getopt.c
-  glad_gl.c
-  glad_vulkan.c
-  Generating Code...
-  glfwinfo.vcxproj -> C:\OpenGL\build\tests\Debug\glfwinfo.exe

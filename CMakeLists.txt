@@ -1,56 +1,39 @@
 cmake_minimum_required(VERSION 3.0)
 
-project(CMakeTutorial)
+project(TempestEngine)
 
-# Set lib paths
-SET(OPENGL_LIB ${CMAKE_SOURCE_DIR}/external/OpenGL/libs)
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 
-# Set include paths
-SET(GLAD_INCLUDE ${CMAKE_SOURCE_DIR}/external/OpenGL/include/glad)
-SET(KHR_INCLUDE ${CMAKE_SOURCE_DIR}/external/OpenGL/include/KHR)
-SET(GLFW_INCLUDE ${CMAKE_SOURCE_DIR}/external/OpenGL/include/GLFW)
-SET(OPENGL_INCLUDE ${CMAKE_SOURCE_DIR}/external/OpenGL/include)
+# Add OpenGL to build
+add_subdirectory(${CMAKE_SOURCE_DIR}/external/OpenGL/)
 
-# Include our paths
-include_directories(${OPENGL_INCLUDE})
-include_directories(${GLFW_INCLUDE})
-include_directories(${KHR_INCLUDE})
-include_directories(${GLAD_INCLUDE})
-
-
-
-
-
-# Wildcard files and add executable (Target)
+# Wildcard files from /src/ and add executable (Target)
 file(GLOB SOURCES "src/*")
-add_executable(CMakeTutorial ${SOURCES})
+add_executable(TempestEngine ${SOURCES})
 
 # Link OpenGL
-target_link_libraries(CMakeTutorial ${OPENGL_LIB}/glfw3.lib)
-
-
-
-
-
+target_link_libraries(TempestEngine glfw)
 
 # Wildcard shader and image files
 file(GLOB SHADERS "${CMAKE_SOURCE_DIR}/src/shaders/*")
 file(GLOB IMAGES "${CMAKE_SOURCE_DIR}/src/images/*")
 
 # Now we need to copy our shaders and our images
-add_custom_command(TARGET CMakeTutorial POST_BUILD
+add_custom_command(TARGET TempestEngine POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${CMAKE_SOURCE_DIR}/src/shaders
-        $<TARGET_FILE_DIR:CMakeTutorial>/shaders
+        $<TARGET_FILE_DIR:TempestEngine>/shaders
     COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${CMAKE_SOURCE_DIR}/src/images
-        $<TARGET_FILE_DIR:CMakeTutorial>/images
+        $<TARGET_FILE_DIR:TempestEngine>/images
     COMMAND ${CMAKE_COMMAND} -E copy
         ${SHADERS}
-        $<TARGET_FILE_DIR:CMakeTutorial>/shaders
+        $<TARGET_FILE_DIR:TempestEngine>/shaders
     COMMAND ${CMAKE_COMMAND} -E copy
         ${IMAGES}
-        $<TARGET_FILE_DIR:CMakeTutorial>/images
+        $<TARGET_FILE_DIR:TempestEngine>/images
 )
 
 

@@ -1,6 +1,0 @@
-﻿  Building Custom Rule C:/OpenGL/tests/CMakeLists.txt
-  events.c
-  getopt.c
-  glad_gl.c
-  Generating Code...
-  events.vcxproj -> C:\OpenGL\build\tests\Debug\events.exe
