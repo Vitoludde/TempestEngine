@@ -1,5 +1,5 @@
 name: Windows | CMake
- 
+
 on:
   push:
     branches: [ "master" ]
