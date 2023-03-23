@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <math.h>
-//#include <format>
+#include <fmt/core.h>
 
 #define PI           3.14159265358979323846f  /* pi */
 
@@ -80,10 +80,10 @@ namespace TempestEngine
 				from.x * to.y - from.y * to.x);
 		}
 
-		/*std::string toString()
+		std::string toString()
 		{
-			return std::format("({}, {}, {})", x, y, z);
-		}*/
+			return fmt::format("({}, {}, {})", x, y, z);
+		}
 
 
 

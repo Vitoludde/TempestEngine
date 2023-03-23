@@ -2,19 +2,25 @@ cmake_minimum_required(VERSION 3.0)
 
 project(TempestEngine)
 
+# GLFW build variables
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 
-# Add OpenGL to build
+# Add OpenGL and FMTLIB to build
 add_subdirectory(${CMAKE_SOURCE_DIR}/external/OpenGL/)
+add_subdirectory(${CMAKE_SOURCE_DIR}/external/fmt/)
 
 # Wildcard files from /src/ and add executable (Target)
 file(GLOB SOURCES "src/*")
 add_executable(TempestEngine ${SOURCES})
 
-# Link OpenGL
+# Set C++ standard
+set_property(TARGET TempestEngine PROPERTY CXX_STANDARD 20)
+
+# Link OpenGL, FMTLIB
 target_link_libraries(TempestEngine glfw)
+target_link_libraries(TempestEngine fmt::fmt)
 
 # Wildcard shader and image files
 file(GLOB SHADERS "${CMAKE_SOURCE_DIR}/src/shaders/*")

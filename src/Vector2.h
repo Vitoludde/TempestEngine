@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <math.h>
-//#include <format>
+#include <fmt/core.h>
 
 
 #define PI           3.14159265358979323846f  /* pi */
@@ -51,9 +51,9 @@ namespace TempestEngine {
             return (from - to).magnitude();               // Distance, this is the vectors subtracted eachother and then the mangitude of this new vector
         }
 
-        /*std::string toString() {
-            return std::format("({}, {})", x, y);
-        }*/
+        std::string toString() {
+            return fmt::format("({}, {})", x, y);
+        }
 
         // Functions linked to the object
         float magnitude() { // Returns a flaot, this is the magnitude. The formula is: sqrt(each coordinate property^2)

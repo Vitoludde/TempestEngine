@@ -35,7 +35,7 @@
 
     Quaternion pq = p + q;
 
-    //std::cout << pq.scalar << " + " << pq.v.toString() << "\n";
+    std::cout << pq.scalar << " + " << pq.v.toString() << "\n";
 
     // Rotate vector
     Vector3 v(0, 1, 0);
@@ -43,7 +43,7 @@
 
     Vector3 RotatedVector = v.rotate(90, axis);
 
-    //std::cout << RotatedVector.toString();
+    std::cout << RotatedVector.toString();
 
     return 0;
-} */
+}*/
