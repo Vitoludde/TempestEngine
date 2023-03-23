@@ -1,15 +1,28 @@
 # TempestEngine
 
-# How to compile
+## A W.I.P Game engine/Graphics engine
 
-1. Download the zip of this repo, extract it and navigate to build. Run following command in this folder:
+## How to compile
 
-```cmake ..```
-    
-2. This will generate a buildable folder depending on your system. The tested compilers are VS17 (2020) and GCC.
+### Windows
 
-3. The rest of this tutorial will have GCC as it's compiler. Now when the build folder is done run the following command:
+1. Download this repository via Zip or using the command: ```git clone https://github.com/Vitoludde/TempestEngine.git```
 
-```make```
-    
-4. This will generate an executable in this folder named TempestEngine
+2. Once the repository is locally downloaded: Navigate to the build folder and run following command:
+    ```cmake ..```
+
+3. Depending on what compiler you have chosen or what cmake has automatically chosen your folder may look different what is followed here under Windows, if you have GCC please follow the last part of the linux tutorial.
+
+4. If you have Visual Studio set as your compiler then CMake will generate a file called TempestEngine.sln, run this and then build the solution. An executable will be generated in PATH-TO-PROJECT/build/Debug
+
+### Linux
+
+1. Download this repository via Zip or using the command: ```git clone https://github.com/Vitoludde/TempestEngine.git```
+
+2. Once the repository is locally downloaded: Navigate to the build folder and run following command:
+    ```cmake ..```
+
+3. Since Linux doesn't have Visual Studio CMake will now generate a makefile, please run folling command:
+    ```make```
+
+4. This makefile will generate an executable in the build folder named TempestEngine
