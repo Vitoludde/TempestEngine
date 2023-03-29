@@ -1,7 +1,7 @@
 # TempestEngine
 
 ## A W.I.P Game engine/Graphics engine
-
+[![Ubuntu | CMake](https://github.com/Vitoludde/TempestEngine/actions/workflows/ubuntu-cmake.yml/badge.svg)](https://github.com/Vitoludde/TempestEngine/actions/workflows/ubuntu-cmake.yml)
 ## How to compile
 
 ### Windows
