@@ -10,6 +10,7 @@ set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 # Add OpenGL and FMTLIB to build
 add_subdirectory(${CMAKE_SOURCE_DIR}/external/OpenGL/)
 add_subdirectory(${CMAKE_SOURCE_DIR}/external/fmt/)
+add_subdirectory(${CMAKE_SOURCE_DIR}/external/glm/)
 
 # Wildcard files from /src/ and add executable (Target)
 file(GLOB SOURCES "src/*")
@@ -21,6 +22,7 @@ set_property(TARGET TempestEngine PROPERTY CXX_STANDARD 20)
 # Link OpenGL, FMTLIB
 target_link_libraries(TempestEngine glfw)
 target_link_libraries(TempestEngine fmt::fmt)
+target_link_libraries(TempestEngine glm)
 
 # Wildcard shader and image files
 file(GLOB SHADERS "${CMAKE_SOURCE_DIR}/src/shaders/*")

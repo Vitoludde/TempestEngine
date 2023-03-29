@@ -9,8 +9,18 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
+// GLM
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 // Our math
+#include "Vector2.h"
 #include "Vector3.h"
+#include "Vector4.h"
+#include "Quaternion.h"
+#include "Matrix.h"
+#include "Matrix4.h"
 
 // Our classes
 #include "Shader.h"
@@ -26,6 +36,7 @@ const char* IMAGEFOLDERPATH = "images/";
 // Predefine functions
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
+void TestingMath();
 
 // Main function
 int main() {
@@ -142,6 +153,8 @@ int main() {
 	ourShader.setInt("texture2", 1);
 
 
+	TestingMath();
+
 
 	// render loop
 	// -----------
@@ -192,4 +205,17 @@ void processInput(GLFWwindow* window)													// Function for handling keybo
 	{
 		glfwSetWindowShouldClose(window, true);
 	}
+}
+
+
+void TestingMath()
+{
+	Vector4 vec(1.0f, 0.0f, 0.0f, 1.0f);
+	Matrix4 trans = Matrix4(1.0f);
+	trans = Matrix4::translateMatrix(trans, Vector3(1.0f, 1.0f, 0.0f));
+	vec = trans * vec;
+
+	std::cout << vec.x << vec.y << vec.z << std::endl;
+
+	Matrix4 trans = Matrix(1.0f);
 }

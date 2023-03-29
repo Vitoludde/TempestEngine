@@ -6,6 +6,11 @@
 #include <vector>
 #include <fmt/core.h>
 
+// For casting
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 #define PI           3.14159265358979323846f  /* pi */
 
 using namespace std;
@@ -157,6 +162,10 @@ namespace TempestEngine
 		// Casts
 		operator std::vector<double>() const {
 			return std::vector<double>{x, y, z};
+		}
+
+		operator glm::vec3() const {
+			return glm::vec3(x, y, z);
 		}
 	};
 }

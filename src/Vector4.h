@@ -5,6 +5,12 @@
 #include <math.h>
 #include <fmt/core.h>
 
+#include "Vector3.h"
+
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 #define PI           3.14159265358979323846f  /* pi */
 
 using namespace std;
@@ -83,6 +89,10 @@ namespace TempestEngine {
             w = w / normalized;
         }
 
+        Vector3 toVector3() {
+            return Vector3(x, y, z);
+        }
+
 
         // Operations
         Vector4 operator+(const Vector4& other) { // Returns a NEW vector. Example usage would be Vector4 Added = Vector4(2, 5, 1) + Vector(1, 0, 5) = Vector4(3, 5, 6)
@@ -123,6 +133,11 @@ namespace TempestEngine {
         bool operator!=(const Vector4& other) { // Checks if our vector is NOT equal to another vector
             return x != other.x && y != other.y && z != other.z && w != other.w;
         }
+
+        // Casts
+        operator glm::vec4() const {
+			return glm::vec4(x, y, z, w);
+		}
     };
 }
 

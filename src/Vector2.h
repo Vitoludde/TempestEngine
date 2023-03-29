@@ -5,6 +5,9 @@
 #include <math.h>
 #include <fmt/core.h>
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 #define PI           3.14159265358979323846f  /* pi */
 
@@ -112,6 +115,12 @@ namespace TempestEngine {
         Vector2 operator()(float x, float y) {
             return Vector2(x, y);
         }
+
+
+        // Casts
+        operator glm::vec2() const {
+			return glm::vec2(x, y);
+		}
     };
 }
 
