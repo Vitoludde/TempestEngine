@@ -21,6 +21,7 @@
 #include "core/math/Quaternion.h"
 #include "core/math/Matrix.h"
 #include "core/math/Matrix4.h"
+#include "core/math/Matrix_transform.h"
 
 // Our classes
 #include "Shader.h"
@@ -29,17 +30,18 @@
 using namespace TempestEngine;
 const unsigned int SCREEN_WIDTH = 800;
 const unsigned int SCREEN_HEIGHT = 600;
-const char* VERTEXSHADERPATH = "shaders/vertexshader.shader";
-const char* FRAGMENTSHADERPATH = "shaders/fragmentshader.shader";
-const char* IMAGEFOLDERPATH = "images/";
+const char *VERTEXSHADERPATH = "shaders/vertexshader.shader";
+const char *FRAGMENTSHADERPATH = "shaders/fragmentshader.shader";
+const char *IMAGEFOLDERPATH = "images/";
 
 // Predefine functions
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void processInput(GLFWwindow* window);
+void framebuffer_size_callback(GLFWwindow *window, int width, int height);
+void processInput(GLFWwindow *window);
 void TestingMath();
 
 // Main function
-int main() {
+int main()
+{
 	// glfw: initialize and configure
 	// ------------------------------
 	glfwInit();
@@ -49,7 +51,7 @@ int main() {
 
 	// glfw window creation
 	// --------------------
-	GLFWwindow* window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "LearnOpenGL", NULL, NULL);
+	GLFWwindow *window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "LearnOpenGL", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -71,14 +73,14 @@ int main() {
 
 	float vertices[] = {
 		// Positions          // Colors           // Texture coords
-		 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, // top right
-		 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f, // bottom right
-		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f, // bottom left
-		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f  // top left 
+		0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f,	  // top right
+		0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f,  // bottom right
+		-0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, // bottom left
+		-0.5f, 0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f	  // top left
 	};
 	unsigned int indices[] = {
 		0, 1, 3, // first triangle
-		1, 2, 3  // second triangle
+		1, 2, 3	 // second triangle
 	};
 	unsigned int VBO, VAO, EBO;
 	glGenVertexArrays(1, &VAO);
@@ -94,20 +96,19 @@ int main() {
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 	// Position attribute
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)0);
 	glEnableVertexAttribArray(0);
 	// Color attribute
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
 	// Texture coord attribute
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)(6 * sizeof(float)));
 	glEnableVertexAttribArray(2);
-
 
 	unsigned int texture1, texture2;
 	// Generate texture 1
 	glGenTextures(1, &texture1);
-	glBindTexture(GL_TEXTURE_2D, texture1); 
+	glBindTexture(GL_TEXTURE_2D, texture1);
 	// Set texture wrapping and mipmaps
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -152,9 +153,7 @@ int main() {
 	ourShader.setInt("texture1", 0);
 	ourShader.setInt("texture2", 1);
 
-
 	TestingMath();
-
 
 	// render loop
 	// -----------
@@ -192,21 +191,18 @@ int main() {
 	return 0;
 }
 
-
-
-void framebuffer_size_callback(GLFWwindow* window, int width, int height)				// Function for handling window resizing events
+void framebuffer_size_callback(GLFWwindow *window, int width, int height) // Function for handling window resizing events
 {
 	glViewport(0, 0, width, height);
 }
 
-void processInput(GLFWwindow* window)													// Function for handling keyboard inputs
+void processInput(GLFWwindow *window) // Function for handling keyboard inputs
 {
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 	{
 		glfwSetWindowShouldClose(window, true);
 	}
 }
-
 
 void TestingMath()
 {
@@ -218,4 +214,5 @@ void TestingMath()
 	std::cout << vec.x << vec.y << vec.z << std::endl;
 
 	trans = Matrix4(1.0f);
+	trans = scale(trans, Vector3(0.5f, 0.5f, 0.5f));
 }
