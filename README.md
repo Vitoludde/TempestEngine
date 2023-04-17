@@ -3,6 +3,8 @@
 ## A W.I.P Game engine/Graphics engine
 [![Ubuntu | CMake](https://github.com/Vitoludde/TempestEngine/actions/workflows/ubuntu-cmake.yml/badge.svg)](https://github.com/Vitoludde/TempestEngine/actions/workflows/ubuntu-cmake.yml)
 
+[![Windows | CMake](https://github.com/Vitoludde/TempestEngine/actions/workflows/windows-cmake.yml/badge.svg)](https://github.com/Vitoludde/TempestEngine/actions/workflows/windows-cmake.yml)
+
 This is project is a long sighted project. The main goal at this stage of the project is to integrate a custom built math engine and enable support for GLSL with some kind of casting interaction between the two, this is to lay a foundation for custom built games using this project as an engine.
 
 ## How to compile
