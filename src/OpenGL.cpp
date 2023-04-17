@@ -212,7 +212,7 @@ void TestingMath()
 {
 	Vector4 vec(1.0f, 0.0f, 0.0f, 1.0f);
 	Matrix4 trans = Matrix4(1.0f);
-	trans = Matrix4::translateMatrix(trans, Vector3(1.0f, 1.0f, 0.0f));
+	trans = Matrix4::translateMatrix(trans, Vector4(1.0f, 1.0f, 0.0f, 1.0f));
 	vec = trans * vec;
 
 	std::cout << vec.x << vec.y << vec.z << std::endl;

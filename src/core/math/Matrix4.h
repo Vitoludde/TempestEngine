@@ -77,6 +77,17 @@ namespace TempestEngine {
 			return Result;
 		}
 
+		static Matrix4 translateMatrix(Matrix4 m, Vector4 v) {
+			Matrix4 Result = m;
+
+			Result.data[3][0] += v.x;
+			Result.data[3][1] += v.y;
+			Result.data[3][2] += v.z;
+			Result.data[3][3] += v.w;
+
+			return Result;
+		}
+
 		Matrix4 operator+(Matrix4 other) {
 			//TODO: Implement
 		}
