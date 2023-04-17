@@ -15,12 +15,12 @@
 #include <glm/gtc/type_ptr.hpp>
 
 // Our math
-#include "Vector2.h"
-#include "Vector3.h"
-#include "Vector4.h"
-#include "Quaternion.h"
-#include "Matrix.h"
-#include "Matrix4.h"
+#include "core/math/Vector2.h"
+#include "core/math/Vector3.h"
+#include "core/math/Vector4.h"
+#include "core/math/Quaternion.h"
+#include "core/math/Matrix.h"
+#include "core/math/Matrix4.h"
 
 // Our classes
 #include "Shader.h"
@@ -216,4 +216,6 @@ void TestingMath()
 	vec = trans * vec;
 
 	std::cout << vec.x << vec.y << vec.z << std::endl;
+
+	trans = Matrix4(1.0f);
 }
