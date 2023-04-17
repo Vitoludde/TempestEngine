@@ -216,6 +216,4 @@ void TestingMath()
 	vec = trans * vec;
 
 	std::cout << vec.x << vec.y << vec.z << std::endl;
-
-	Matrix4 trans = Matrix(1.0f);
 }
