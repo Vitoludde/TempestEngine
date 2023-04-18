@@ -22,6 +22,8 @@
 #include "core/math/Matrix.h"
 #include "core/math/Matrix4.h"
 #include "core/math/Matrix_transform.h"
+#include "core/math/Math_defines.h"
+#include "core/math/Trigonometric_functions.h"
 
 // Our classes
 #include "Shader.h"
@@ -206,13 +208,27 @@ void processInput(GLFWwindow *window) // Function for handling keyboard inputs
 
 void TestingMath()
 {
-	Vector4 vec(1.0f, 0.0f, 0.0f, 1.0f);
-	Matrix4 trans = Matrix4(1.0f);
-	trans = Matrix4::translateMatrix(trans, Vector4(1.0f, 1.0f, 0.0f, 1.0f));
-	vec = trans * vec;
+	glm::mat4 trans = glm::mat4(4.0f);
 
-	std::cout << vec.x << vec.y << vec.z << std::endl;
+	trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+	trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));
 
-	trans = Matrix4(1.0f);
-	trans = scale(trans, Vector3(0.5f, 0.5f, 0.5f));
+	std::cout << trans[0][0] << trans[0][1] << trans[0][2] << trans[0][3] << std::endl;
+	std::cout << trans[1][0] << trans[1][1] << trans[1][2] << trans[1][3] << std::endl;
+	std::cout << trans[2][0] << trans[2][1] << trans[2][2] << trans[2][3] << std::endl;
+	std::cout << trans[3][0] << trans[3][1] << trans[3][2] << trans[3][3] << std::endl;
+
+	std::cout << std::endl
+			  << std::endl
+			  << std::endl;
+
+	Matrix4 trans1 = Matrix4(4.0f);
+
+	trans1 = rotate(trans1, radians(90.0f), Vector3(0.0f, 0.0f, 1.0f));
+	trans1 = scale(trans1, Vector3(0.5f, 0.5f, 0.5f));
+
+	std::cout << trans1[0][0] << trans1[0][1] << trans1[0][2] << trans1[0][3] << std::endl;
+	std::cout << trans1[1][0] << trans1[1][1] << trans1[1][2] << trans1[1][3] << std::endl;
+	std::cout << trans1[2][0] << trans1[2][1] << trans1[2][2] << trans1[2][3] << std::endl;
+	std::cout << trans1[3][0] << trans1[3][1] << trans1[3][2] << trans1[3][3] << std::endl;
 }

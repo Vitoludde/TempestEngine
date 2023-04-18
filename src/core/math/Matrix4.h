@@ -124,7 +124,13 @@ namespace TempestEngine
 			return result;
 		}
 
-		Vector4 operator*(const Vector3 &vector) const
+		Vector4 operator[](const int &length) const
+		{
+			return Vector4(data[length][0], data[length][1], data[length][2], data[length][3]);
+		}
+
+		Vector4
+		operator*(const Vector3 &vector) const
 		{
 			return Vector4(
 				vector.x * data[0][0] + vector.y * data[1][0] + vector.z * data[2][0] + 1 * data[3][0],
