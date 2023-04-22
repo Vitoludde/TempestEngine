@@ -3,6 +3,7 @@
 
 #pragma once
 #pragma warning(disable : 4201)
+#pragma GCC diagnostic ignored "-Werror=unknown-pragmas"
 
 // Dependency:
 #include "../detail/type_mat3x3.hpp"

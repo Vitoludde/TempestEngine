@@ -6,6 +6,7 @@
 #include "Vector4.h"
 
 #pragma warning(disable : 4505)
+#pragma GCC diagnostic ignored "-Werror=unknown-pragmas"
 
 namespace TempestEngine
 {

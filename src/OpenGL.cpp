@@ -2,6 +2,8 @@
 
 #pragma warning(disable : 4459)
 #pragma warning(disable : 4100)
+#pragma GCC diagnostic ignored "-Werror=unknown-pragmas"
+#pragma GCC diagnostic ignored "-Werror=unknown-pragmas"
 
 // Main Includes
 #include <iostream>
