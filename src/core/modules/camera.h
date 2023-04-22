@@ -2,14 +2,14 @@
 #define CAMERA_H
 
 // Math includes
-#include "core/math/Matrix4.h"
-#include "core/math/Vector3.h"
-#include "core/math/Matrix_transform.h"
-#include "core/math/Matrix_clip_space.h"
-#include "core/math/Trigonometric_functions.h"
+#include "../math/Matrix4.h"
+#include "../math/Vector3.h"
+#include "../math/Matrix_transform.h"
+#include "../math/Matrix_clip_space.h"
+#include "../math/Trigonometric_functions.h"
 
 // Input includes
-#include "core/input/input_handler.h"
+#include "../input/input_handler.h"
 
 // Defines several possible options for camera movement. Used as abstraction to stay away from window-system specific input methods
 enum Camera_Movement
