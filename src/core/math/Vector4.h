@@ -85,6 +85,12 @@ namespace TempestEngine
             return Vector4(x / normalized, y / normalized, z / normalized, w / normalized);
         }
 
+        Vector4 normalized(const Vector4 &v)
+        { // Returnes a NEW normalized Vector4
+            float normalized = sqrt(powf(v.x, 2) + powf(v.y, 2) + powf(v.z, 2) + powf(v.w, 2));
+            return Vector4(v.x / normalized, v.y / normalized, v.z / normalized, v.w / normalized);
+        }
+
         void normalize()
         { // Modifies our Vector4 to be normalized
             float normalized = sqrt(powf(x, 2) + powf(y, 2) + powf(z, 2) + powf(w, 2));

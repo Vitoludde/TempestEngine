@@ -67,40 +67,6 @@ namespace TempestEngine
 			delete[] data;
 		}*/
 
-		static Vector4 translate(const Matrix4 &TranslationMatrix, const Vector4 &TranslationVector)
-		{
-			return TranslationMatrix * TranslationVector;
-		}
-
-		static Vector4 translate(const Matrix4 &TranslationMatrix, const Vector3 &TranslationVector)
-		{
-			return TranslationMatrix * TranslationVector;
-		}
-
-		static Matrix4 translateMatrix(Matrix4 m, Vector3 v)
-		{
-			Matrix4 Result = m;
-
-			Result.data[3][0] += v.x;
-			Result.data[3][1] += v.y;
-			Result.data[3][2] += v.z;
-			Result.data[3][3] = 1;
-
-			return Result;
-		}
-
-		static Matrix4 translateMatrix(Matrix4 m, Vector4 v)
-		{
-			Matrix4 Result = m;
-
-			Result.data[3][0] += v.x;
-			Result.data[3][1] += v.y;
-			Result.data[3][2] += v.z;
-			Result.data[3][3] += v.w;
-
-			return Result;
-		}
-
 		Matrix4 operator+(Matrix4 other)
 		{
 			// TODO: Implement
@@ -129,8 +95,7 @@ namespace TempestEngine
 			return Vector4(data[length][0], data[length][1], data[length][2], data[length][3]);
 		}
 
-		Vector4
-		operator*(const Vector3 &vector) const
+		Vector4 operator*(const Vector3 &vector) const
 		{
 			return Vector4(
 				vector.x * data[0][0] + vector.y * data[1][0] + vector.z * data[2][0] + 1 * data[3][0],
@@ -157,6 +122,54 @@ namespace TempestEngine
 					data[r][c] *= scalar;
 				}
 			}
+		}
+
+		operator glm::mat4() const
+		{
+			return glm::mat4(
+				data[0][0],
+				data[0][1],
+				data[0][2],
+				data[0][3],
+
+				data[1][0],
+				data[1][1],
+				data[1][2],
+				data[1][3],
+
+				data[2][0],
+				data[2][1],
+				data[2][2],
+				data[2][3],
+
+				data[3][0],
+				data[3][1],
+				data[3][2],
+				data[3][3]);
+		}
+
+		glm::mat4 toGlmMat4() const
+		{
+			return glm::mat4(
+				data[0][0],
+				data[0][1],
+				data[0][2],
+				data[0][3],
+
+				data[1][0],
+				data[1][1],
+				data[1][2],
+				data[1][3],
+
+				data[2][0],
+				data[2][1],
+				data[2][2],
+				data[2][3],
+
+				data[3][0],
+				data[3][1],
+				data[3][2],
+				data[3][3]);
 		}
 	};
 }

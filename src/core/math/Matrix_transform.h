@@ -125,6 +125,62 @@ namespace TempestEngine
 
         return Result;
     }
+
+    const static Vector4 translate(const Matrix4 &TranslationMatrix, const Vector3 &TranslationVector)
+    {
+        return TranslationMatrix * TranslationVector;
+    }
+
+    const static Vector4 translate(const Matrix4 &TranslationMatrix, const Vector4 &TranslationVector)
+    {
+        return TranslationMatrix * TranslationVector;
+    }
+
+    const static Matrix4 translateMatrix(Matrix4 m, Vector3 v)
+    {
+        Matrix4 Result = m;
+
+        Result.data[3][0] += v.x;
+        Result.data[3][1] += v.y;
+        Result.data[3][2] += v.z;
+        Result.data[3][3] = 1;
+
+        return Result;
+    }
+
+    const static Matrix4 translateMatrix(Matrix4 m, Vector4 v)
+    {
+        Matrix4 Result = m;
+
+        Result.data[3][0] += v.x;
+        Result.data[3][1] += v.y;
+        Result.data[3][2] += v.z;
+        Result.data[3][3] += v.w;
+
+        return Result;
+    }
+
+    const static Matrix4 lookAt(Vector3 eye, Vector3 center, Vector3 up)
+    {
+        Vector3 const f((center - eye).normalized());
+        Vector3 const s((Vector3::cross(f, up)).normalized());
+        Vector3 const u(Vector3::cross(s, f));
+
+        Matrix4 Result(1);
+        Result.data[0][0] = s.x;
+        Result.data[1][0] = s.y;
+        Result.data[2][0] = s.z;
+        Result.data[0][1] = u.x;
+        Result.data[1][1] = u.y;
+        Result.data[2][1] = u.z;
+        Result.data[0][2] = -f.x;
+        Result.data[1][2] = -f.y;
+        Result.data[2][2] = -f.z;
+        Result.data[3][0] = -Vector3::dot(s, eye);
+        Result.data[3][1] = -Vector3::dot(u, eye);
+        Result.data[3][2] = Vector3::dot(f, eye);
+        return Result;
+    }
 }
 
 #endif

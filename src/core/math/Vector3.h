@@ -75,11 +75,17 @@ namespace TempestEngine
 			return magnitude(from, to); // Distance, this is the vectors subtracted eachother and then the mangitude of this new vector
 		}
 
-		static Vector3 cross(const Vector3 &from, const Vector3 &to)
+		static Vector3 cross(const Vector3 &x, const Vector3 &y)
 		{
-			return Vector3(from.y * to.z - from.z * to.y,
-						   from.z * to.x - from.x * to.z,
-						   from.x * to.y - from.y * to.x);
+			return Vector3(x.y * y.z - y.y * x.z,
+						   x.z * y.x - y.z * x.x,
+						   x.x * y.y - y.x * x.y);
+		}
+
+		static Vector3 normalize(const Vector3 &v)
+		{ // Modifies our Vector3 to be normalized
+			float normalized = sqrt(powf(v.x, 2) + powf(v.y, 2) + powf(v.z, 2));
+			return Vector3(v.x / normalized, v.y / normalized, v.z / normalized);
 		}
 
 		std::string toString()
@@ -132,11 +138,13 @@ namespace TempestEngine
 			y = y * scalar;
 			z = z * scalar;
 		}
-		void operator+=(const Vector3 &other)
+		void operator+=(Vector3 other)
 		{ // Modifies this vector. Example of this would be: Vector3 PushVector (it's downwards) += Vector3 GravitationalVector
-			x, y, z += other.x, other.y, other.z;
+			x += other.x;
+			y += other.y;
+			z += other.z;
 		}
-		void operator-=(const Vector3 &other)
+		void operator-=(Vector3 other)
 		{ // Modifies this vector. Example of this would be: Vector3 PushVector (it's sideways along a surface that has friction) -= Vector3 FrictionVector
 			x, y, z -= other.x, other.y, other.z;
 		}

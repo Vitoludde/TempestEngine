@@ -2,3 +2,5 @@
 !/build/
 !/build/gccbuild.sh
 /.vscode/*
+/personal/*
+/personal/
