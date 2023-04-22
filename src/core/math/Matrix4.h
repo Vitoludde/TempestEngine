@@ -67,10 +67,10 @@ namespace TempestEngine
 			delete[] data;
 		}*/
 
-		Matrix4 operator+(Matrix4 other)
+		/*Matrix4 operator+(Matrix4 other)
 		{
 			// TODO: Implement
-		}
+		}*/
 
 		Matrix4 operator*(Matrix4 other) const
 		{

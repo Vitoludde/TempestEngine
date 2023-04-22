@@ -1,13 +1,14 @@
+
+
+#pragma warning(disable : 4459)
+#pragma warning(disable : 4100)
+
 // Main Includes
 #include <iostream>
 
 // OpenGL Includes
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-
-// STB Image include
-#define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
 
 // GLM
 #include <glm/glm.hpp>
@@ -35,6 +36,10 @@
 
 // Our classes
 #include "Shader.h"
+
+// STB Image include
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
 
 // Settings
 using namespace TempestEngine;
@@ -207,8 +212,7 @@ int main()
 		float currentTime = static_cast<float>(glfwGetTime());
 		deltaTime = currentTime - lastFrame;
 		lastFrame = currentTime;
-		float FPS = 1 / deltaTime;
-		std::cout << "FPS: " << FPS << std::endl;
+		// float FPS = 1 / deltaTime;
 
 		// input
 		// -----
@@ -248,7 +252,6 @@ int main()
 			// calculate the model matrix for each object and pass it to shader before drawing
 			Matrix4 model = Matrix4(1.0f);
 			model = translateMatrix(model, cubePositions[i]);
-			float angle = 20.0f * i;
 			model = rotate(model, sin((float)glfwGetTime() * (i + 1)), Vector3(1.0f, 0.0f, 0.0f));
 			model = rotate(model, sin((float)glfwGetTime() * (i + 2)), Vector3(0.0f, 1.0f, 0.0f));
 			model = rotate(model, sin((float)glfwGetTime() * (i + 3)), Vector3(0.0f, 0.0f, 1.0f));
@@ -268,7 +271,7 @@ int main()
 	return 0;
 }
 
-void framebuffer_size_callback(GLFWwindow *window, int width, int height) // Function for handling window resizing events
+void framebuffer_size_callback(GLFWwindow *w, int width, int height) // Function for handling window resizing events
 {
 	glViewport(0, 0, width, height);
 }

@@ -21,11 +21,11 @@ enum Camera_Movement
 };
 
 // Default camera values
-const float YAW = -90.0f;
-const float PITCH = 0.0f;
-const float SPEED = 2.5f;
-const float SENSITIVITY = 0.1f;
-const float ZOOM = 45.0f;
+const float _YAW = -90.0f;
+const float _PITCH = 0.0f;
+const float _SPEED = 2.5f;
+const float _SENSITIVITY = 0.1f;
+const float _ZOOM = 45.0f;
 
 namespace TempestEngine
 {
@@ -42,21 +42,21 @@ namespace TempestEngine
         float Yaw;
         float Pitch;
 
-        Camera(Vector3 position = Vector3(0.0f, 0.0f, 0.0f), Vector3 up = Vector3(0.0f, 1.0f, 0.0f), float yaw = YAW, float pitch = PITCH) : Front(Vector3(0.0f, 0.0f, -1.0f))
+        Camera(Vector3 position = Vector3(0.0f, 0.0f, 0.0f), Vector3 up = Vector3(0.0f, 1.0f, 0.0f)) : Front(Vector3(0.0f, 0.0f, -1.0f))
         {
             Position = position;
             WorldUp = up;
-            Yaw = yaw;
-            Pitch = pitch;
+            Yaw = _YAW;
+            Pitch = _PITCH;
             updateCameraVectors();
         }
 
-        Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch) : Front(Vector3(0.0f, 0.0f, -1.0f))
+        Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float newyaw, float newpitch) : Front(Vector3(0.0f, 0.0f, -1.0f))
         {
             Position = Vector3(posX, posY, posZ);
             WorldUp = Vector3(upX, upY, upZ);
-            Yaw = yaw;
-            Pitch = pitch;
+            Yaw = newyaw;
+            Pitch = newpitch;
             updateCameraVectors();
         }
 

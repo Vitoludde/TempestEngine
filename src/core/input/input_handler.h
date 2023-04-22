@@ -24,6 +24,7 @@ float upInputAxis;
 float mouseHorizontal;
 float mouseVertical;
 float scrollInputAxis;
+float scrollXInputAxis;
 
 enum Key
 {
@@ -250,8 +251,8 @@ namespace TempestEngine
         {
             if (window == NULL)
             {
-                std::cout << "Error 301! You must initialize the input handler before using it!";
-                return;
+                window = w;
+                std::cout << "Warning 300! You must initialize the input handler before using it! This has been automatically corrected but please intiialize the input handler before using it!";
             }
 
             if (firstMouse)
@@ -277,7 +278,13 @@ namespace TempestEngine
 
         void scroll_callback(GLFWwindow *w, double xoffset, double yoffset)
         {
+            if (window == NULL)
+            {
+                window = w;
+                std::cout << "Warning 300! You must initialize the input handler before using it! This has been automatically corrected but please intiialize the input handler before using it!";
+            }
             scrollInputAxis -= (float)yoffset;
+            scrollXInputAxis += (float)xoffset;
             fov -= (float)yoffset;
             if (fov < 1.0f)
                 fov = 1.0f;

@@ -12,6 +12,14 @@ add_subdirectory(${CMAKE_SOURCE_DIR}/external/OpenGL/)
 add_subdirectory(${CMAKE_SOURCE_DIR}/external/fmt/)
 add_subdirectory(${CMAKE_SOURCE_DIR}/external/glm/)
 
+# Warnings strictness
+if ( CMAKE_COMPILER_IS_GNUCC )
+    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror")
+endif()
+if ( MSVC )
+    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /W4 /WX")
+endif()
+
 # Wildcard files from /src/ and add executable (Target)
 file(GLOB SOURCES "src/*")
 add_executable(TempestEngine ${SOURCES})

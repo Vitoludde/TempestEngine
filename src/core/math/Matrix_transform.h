@@ -5,11 +5,12 @@
 #include "Vector3.h"
 #include "Vector4.h"
 
+#pragma warning(disable : 4505)
+
 namespace TempestEngine
 {
-    const static Matrix4 scale(const Matrix4 &m, const Vector3 &v)
+    static Matrix4 scale(const Matrix4 &m, const Vector3 &v)
     {
-        // TODO: Optimize this
         Matrix4 Result;
         Result.data[0][0] = m.data[0][0] * v.x;
         Result.data[0][1] = m.data[0][1] * v.x;

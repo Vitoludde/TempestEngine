@@ -64,9 +64,9 @@ namespace TempestEngine
             return magnitude(from, to); // Distance, this is the vectors subtracted eachother and then the mangitude of this new vector
         }
 
-        static Vector4 cross(const Vector4 &from, const Vector4 &to)
+        /*static Vector4 cross(const Vector4 &from, const Vector4 &to)
         {
-        }
+        }*/
 
         std::string toString()
         {
